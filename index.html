@@ -1,0 +1,301 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LittleThing | Shop Your Style</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Announcement Bar -->
+    <div class="announcement">
+        ✨ Free shipping on orders above ₹999 | Discover your everyday essentials
+    </div>
+
+    <!-- Navigation -->
+    <header class="navbar">
+        <a href="#" class="logo">little<span>thing.</span></a>
+
+        <nav class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#categories">Categories</a>
+            <a href="#products">Shop</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </nav>
+
+        <div class="nav-actions">
+            <button class="cart-button" onclick="toggleCart()">
+                <span class="cart-icon">🛍️</span>
+                Cart <span id="cartCount">0</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <span class="hero-tag">THE NEW COLLECTION</span>
+
+            <h1>Style That<br><em>Speaks You.</em></h1>
+
+            <p>
+                Discover thoughtfully selected essentials that bring
+                confidence, comfort and a little joy to your everyday life.
+            </p>
+
+            <a href="#products" class="hero-btn">Explore Collection <span>→</span></a>
+
+            <div class="hero-note">
+                <span>✦</span> Curated with love, made for you.
+            </div>
+        </div>
+
+        <div class="hero-image">
+            <img
+                src="https://www.stytrix.com/_next/image?url=https%3A%2F%2Fpub-451cc635e8ad41628b83a47b65296c18.r2.dev%2Fblog%2F1772064242500-nafg5131zw-blog-cover-the-complete-ai-fashion-design-workflow-from-conce.png&w=1920&q=75"
+                alt="Fashion collection">
+            <div class="hero-image-label">
+                <span>NEW SEASON</span>
+                <strong>Everyday elegance</strong>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits -->
+    <section class="benefits">
+        <div class="benefit">
+            <span>🚚</span>
+            <div>
+                <strong>Free Shipping</strong>
+                <p>On orders above ₹999</p>
+            </div>
+        </div>
+
+        <div class="benefit">
+            <span>💎</span>
+            <div>
+                <strong>Curated Quality</strong>
+                <p>Selected with care</p>
+            </div>
+        </div>
+
+        <div class="benefit">
+            <span>🔒</span>
+            <div>
+                <strong>Secure Shopping</strong>
+                <p>Safe and easy checkout</p>
+            </div>
+        </div>
+
+        <div class="benefit">
+            <span>💌</span>
+            <div>
+                <strong>Customer Support</strong>
+                <p>We're here to help</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="categories-section" id="categories">
+        <div class="section-heading">
+            <span class="section-tag">FIND YOUR FAVOURITES</span>
+            <h2>Shop by Category</h2>
+            <p>Little things that make a big difference.</p>
+        </div>
+
+        <div class="category-grid">
+            <a href="#products" class="category-card" onclick="selectCategory('fashion')">
+                <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=700&q=80" alt="Fashion">
+                <div class="category-overlay">
+                    <span>01 / COLLECTION</span>
+                    <h3>Fashion</h3>
+                    <p>Explore styles →</p>
+                </div>
+            </a>
+
+            <a href="#products" class="category-card" onclick="selectCategory('electronics')">
+                <img src="https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=700&q=80" alt="Electronics">
+                <div class="category-overlay">
+                    <span>02 / COLLECTION</span>
+                    <h3>Electronics</h3>
+                    <p>Explore gadgets →</p>
+                </div>
+            </a>
+
+            <a href="#products" class="category-card" onclick="selectCategory('accessories')">
+                <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=700&q=80" alt="Accessories">
+                <div class="category-overlay">
+                    <span>03 / COLLECTION</span>
+                    <h3>Accessories</h3>
+                    <p>Explore more →</p>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Products -->
+    <section class="products-section" id="products">
+        <div class="section-heading">
+            <span class="section-tag">HANDPICKED FOR YOU</span>
+            <h2>Our Best Picks</h2>
+            <p>Discover the pieces everyone is loving right now.</p>
+        </div>
+
+        <!-- Search and Filters -->
+        <div class="shop-toolbar">
+            <div class="search-box">
+                <span>⌕</span>
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search your favourite products..."
+                    oninput="applyFilters()">
+            </div>
+
+            <div class="filter-group">
+                <select id="categoryFilter" onchange="applyFilters()">
+                    <option value="all">All Categories</option>
+                    <option value="electronics">Electronics</option>
+                    <option value="fashion">Fashion</option>
+                    <option value="accessories">Accessories</option>
+                </select>
+
+                <select id="priceFilter" onchange="applyFilters()">
+                    <option value="all">All Prices</option>
+                    <option value="low">Under ₹500</option>
+                    <option value="medium">₹500 - ₹1000</option>
+                    <option value="high">Above ₹1000</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Products are loaded using JavaScript -->
+        <div id="productContainer" class="product-container"></div>
+    </section>
+
+    <!-- Promotional Banner -->
+    <section class="promo-banner">
+        <div class="promo-content">
+            <span> A LITTLE SOMETHING SPECIAL </span>
+            <h2>Make Room for<br><em>More Beautiful Things.</em></h2>
+            <p>Find something you'll love. Every single day.</p>
+            <a href="#products" class="promo-btn">Shop Now →</a>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about-section" id="about">
+        <div class="about-image">
+            <img src="https://png.pngtree.com/png-vector/20211019/ourmid/pngtree-enjoy-the-little-things-black-colour-png-image_3995523.png" alt="Our store">
+        </div>
+
+        <div class="about-content">
+            <span class="section-tag">OUR STORY</span>
+            <h2>It's the little things that make life beautiful.</h2>
+            <p>
+                At LittleThing, we believe shopping should feel simple,
+                inspiring and personal. We bring together everyday
+                essentials and delightful finds to make your day a little
+                brighter.
+            </p>
+            <a href="#products" class="text-link">Discover our collection →</a>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <span class="section-tag">STAY IN THE LOOP</span>
+        <h2>A little love in your inbox.</h2>
+        <p>Get updates on new arrivals, special offers and more.</p>
+
+        <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing!');">
+            <input type="email" placeholder="Enter your email address" required>
+            <button type="submit">Subscribe →</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="#" class="logo">little<span>thing.</span></a>
+                <p>Everyday essentials. Extraordinary little moments.</p>
+                <div class="social-links">
+                    <a href="#">Instagram</a>
+                    <a href="#">Facebook</a>
+                    <a href="#">Pinterest</a>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h4>Explore</h4>
+                <a href="#home">Home</a>
+                <a href="#categories">Categories</a>
+                <a href="#products">Shop All</a>
+                <a href="#about">Our Story</a>
+            </div>
+
+            <div class="footer-column">
+                <h4>Help</h4>
+                <a href="#">Shipping Information</a>
+                <a href="#">Returns & Exchanges</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms & Conditions</a>
+            </div>
+
+            <div class="footer-column">
+                <h4>Get in Touch</h4>
+                <p>Email: hello@littlething.com</p>
+                <p>Customer support</p>
+                <p>Monday – Saturday</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 LittleThing. All rights reserved.</p>
+            <p>Made with ♥ for everyday living.</p>
+        </div>
+    </footer>
+
+    <!-- Cart Modal -->
+    <div id="cartSidebar" class="cart-overlay" onclick="if(event.target === this) toggleCart()">
+        <div class="cart-modal">
+            <div class="cart-header">
+                <h2>Your Shopping Bag</h2>
+                <button class="close-cart" onclick="toggleCart()">×</button>
+            </div>
+
+            <div id="cartItems" class="cartItems"></div>
+
+            <div class="cart-footer">
+                <div class="cart-total-row">
+                    <span>Total</span>
+                    <strong id="cartTotal">₹0</strong>
+                </div>
+                <button class="checkout-btn" onclick="checkout()">Proceed to Checkout →</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="./script.js"></script>
+
+<script>
+    function selectCategory(category) {
+        const filter = document.getElementById("categoryFilter");
+
+        if (filter) {
+            filter.value = category;
+            applyFilters();
+        }
+    }
+</script>
+</body>
+</html>
